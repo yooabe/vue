@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <h3>声明式渲染</h3>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello Vue!"
+            }
+        })
+    </script>
+
+    <hr>
+
+    <div id="app2">
+        <span v-bind:title="msg">
+            鼠标悬停几秒查看此处动态绑定的提示信息
+        </span>
+    </div>
+    <script>
+        let app2 = new Vue({
+            el: "#app2",
+            data: {
+                msg: "页面加载于" + new Date().toLocaleString()
+            }
+        })
+    </script>
+
+    <h3>条件与循环</h3>
+    <div id="app3">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+    <script>
+        let app3 = new Vue({
+            el: "#app3",
+            data: {
+                seen: true
+            }
+        })
+    </script>
+    <hr>
+    <div id="app4">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+    <script>
+        let app4 = new Vue({
+            el: "#app4",
+            data: {
+                todos: [
+                    { text: "学习javascript" },
+                    { text: "学习vue" },
+                    { text: "整个牛项目" }
+                ]
+            }
+        })
+    </script>
+
+    <h3>处理用户输入</h3>
+    <div id="app5">
+        <p>{{msg}}</p>
+        <button v-on:click="reverseMsg">反转信息</button>
+    </div>
+    <script>
+        let app5 = new Vue({
+            el: "#app5",
+            data: {
+                msg: "hello Vue.js"
+            },
+            methods: {
+                reverseMsg: function () {
+                    this.msg = this.msg.split('').reverse().join('')
+                }
+            },
+        })
+    </script>
+    <hr>
+    <div id="app6">
+        <p>{{msg}}</p>
+        <input v-model="msg">
+    </div>
+    <script>
+        let app6 = new Vue({
+            el: "#app6",
+            data: {
+                msg: "hello"
+            }
+        })
+    </script>
+    <h3>组件化应用构建</h3>
+    <div id="app7">
+        <ol>
+            <todo-item v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ol>
+    </div>
+    <script>
+        Vue.component("todo-item", {
+            props: ['todo'],
+            template: '<li>{{todo.text}}</li>'
+        })
+        let app7 = new Vue({
+            el: "#app7",
+            data: {
+                list: [
+                    { id: 0, text: "蔬菜" },
+                    { id: 1, text: "奶酪" },
+                    { id: 2, text: "水果" }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
