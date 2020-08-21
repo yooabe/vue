@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../vue.js"></script>
     <style>
-        #login{
+        #login {
             background-color: rgb(224, 161, 161);
         }
-        #register{
+
+        #register {
             background-color: rgb(100, 182, 175);
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <h1>{{msg}}</h1>
@@ -25,17 +28,30 @@
         <div :id="idname">
             <h1>登陆</h1>
         </div>
+
+        <h1 id="test">
+            {{isVip?"贵族":"普通用户"}}
+        </h1>
+
+        <button @click="change">改变颜色</button>
     </div>
 
     <script>
         let app = new Vue({
-            el:"#app",
-            data:{
-                msg:"hello vue",
-                txt:"<span>hello</span>",
-                idname:'register'
+            el: "#app",
+            data: {
+                msg: "hello vue",
+                txt: "<span>hello</span>",
+                idname: 'register',
+                isVip: true
+            },
+            methods: {
+                change: function () {
+                    test.style.background = "#000";
+                }
             }
         })
     </script>
 </body>
+
 </html>
