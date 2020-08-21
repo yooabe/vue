@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../vue.js"></script>
+    <style>
+        #login{
+            background-color: rgb(224, 161, 161);
+        }
+        #register{
+            background-color: rgb(100, 182, 175);
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -13,14 +21,19 @@
 
         <h1>{{txt}}</h1>
         <h1 v-html="txt"></h1>
+
+        <div :id="idname">
+            <h1>登陆</h1>
+        </div>
     </div>
 
     <script>
-        let vm = new Vue({
+        let app = new Vue({
             el:"#app",
             data:{
                 msg:"hello vue",
-                txt:"<span>hello</span>"
+                txt:"<span>hello</span>",
+                idname:'register'
             }
         })
     </script>
