@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{fullName}}
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar',
+                // fullName: 'Foo Bar'
+            },
+            // watch: {
+            //     firstName: function (val) {
+            //         console.log("firstName changed ==> ",val)
+            //         this.fullName = val + ' ' + this.lastName
+            //     },
+            //     lastName: function (val) {
+            //         console.log("lastName changed ==> ",val)
+            //         this.fullName = this.firstName + ' ' + val
+            //     },
+            // },
+            //以上为重复式操作，以下改进为计算属性版本
+            computed: {
+                fullName:function(){
+                    return this.firstName + " " + this.lastName;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
