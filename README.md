@@ -8,4 +8,4 @@ first: https://cn.vuejs.org/v2/guide/
 second: https://www.bilibili.com/video/BV1m741137Q5 
 
 ###### 渡一教育
-third: https://www.bilibili.com/video/BV11z411v7BH 
+third: https://www.bilibili.com/video/BV11z411v7BH
