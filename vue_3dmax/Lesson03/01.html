@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>Message:{{msg}}</span>
+        <br>
+        <span v-once>这个将不会改变:{{msg}}</span>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:1
+            },
+            created:function(){
+                setInterval(()=>{
+                    this.msg++;
+                },1000)
+            }
+        })
+    </script>
+</body>
+</html>

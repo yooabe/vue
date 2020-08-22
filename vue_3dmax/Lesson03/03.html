@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:id="dynamicId"></div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <div>{{count==0?"没有物品":"有物品"}}</div>
+        <div>{{ message.split('').reverse().join('') }}</div>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                dynamicId:"header",
+                isButtonDisabled:true,
+                count:0,
+                message:"hello vue"
+            }
+        })
+    </script>
+</body>
+</html>
