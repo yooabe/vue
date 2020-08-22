@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../../vue.js"></script>
 </head>
+
 <body>
     <div id="app">
-        <div v-bind:id="dynamicId"></div>
-        <button v-bind:disabled="isButtonDisabled">Button</button>
-        <div>{{count==0?"没有物品":"有物品"}}</div>
-        <div>{{ message.split('').reverse().join('') }}</div>
+        <a v-bind:href="url">Click Me</a>
+        <hr>
+        <button v-on:click="onClickLink">Click Me</button>
+        <button v-on:[eventname]="onClickLink">???</button>
+        <form action="/register" v-on:submit.prevent="onSubmit">
+            <button>Submit</button>
+        </form>
+        <p v-if="seen">2.6.0 新增动态参数</p>
     </div>
 
     <script>
         new Vue({
-            el:"#app",
-            data:{
-                dynamicId:"header",
-                isButtonDisabled:true,
-                count:0,
-                message:"hello vue"
+            el: "#app",
+            data: {
+                seen: false,
+                url: "http://www.baidu.com",
+                eventname: "click"
+            },
+            methods: {
+                onClickLink: function () {
+                    alert("You Click Me");
+                },
+                //阻止跳转
+                //对此后续再进行研究（不解
+                onSubmit: function () {
+                    alert("You Submit")
+                }
+            },
+            created: function () {
+                setInterval(() => {
+                    this.seen = !this.seen;
+                }, 2000);
             }
         })
     </script>
 </body>
+
 </html>
