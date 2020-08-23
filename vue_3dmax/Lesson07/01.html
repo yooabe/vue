@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-if="awesome">Vue is awesome</h1>
+        <h1 v-else>Oh no 😢</h1>
+        <!-- <tem v-else></tem> -->
+    </div>
+
+    <script>
+        Vue.component('tem', {
+            template:   `<h1>Title</h1>`
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                awesome: true
+            },
+
+        })
+    </script>
+</body>
+
+</html>
