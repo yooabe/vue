@@ -6,36 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../../vue.js"></script>
-    <style>
-        .active {
-            color: seagreen;
-        }
-
-        .btn {
-            background-color: teal;
-        }
-
-        .btnBig {
-            font-size: 2em;
-        }
-    </style>
 </head>
 
 <body>
     <div id="app">
-        <div v-bind:style="[colorStyle,styleObject]">hello</div>
+        <ul>
+            <li v-for="(item,index) of items" :key="index">
+                {{index}}--{{ item.message }}--{{parentMessage}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) of object">
+                {{index}}--{{ key }}--{{value}}
+            </li>
+        </ul>
     </div>
 
     <script>
 
-        let app = new Vue({
+        let vm = new Vue({
             el: "#app",
             data: {
-                colorStyle:{
-                    color:'teal'
-                },
-                styleObject: {
-                    fontSize: '13px'
+                parentMessage: 'Parent',
+                items: [
+                    { message: "Foo" },
+                    { message: "Bar" }
+                ],
+                object:{
+                    firstName:"John",
+                    lastName:"Doe",
+                    age:"20"
                 }
             },
 
