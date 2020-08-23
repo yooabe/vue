@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+    <style>
+        .active {
+            color: seagreen;
+        }
+
+        .btn {
+            background-color: teal;
+        }
+
+        .btnBig {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:style="[colorStyle,styleObject]">hello</div>
+    </div>
+
+    <script>
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+                colorStyle:{
+                    color:'teal'
+                },
+                styleObject: {
+                    fontSize: '13px'
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
