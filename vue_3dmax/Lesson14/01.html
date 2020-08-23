@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <blog-post title="hello" :likes="5" :is-published="true" :comment-ids="[1,2,3]"></blog-post>
+    </div>
+
+    <script>
+        Vue.component("blog-post",{
+            props:{
+                title:String,
+                likes:Number,
+                isPublished:Boolean,
+                commentIds:Array
+            },
+            template:"<h3>{{title}} {{likes}}</h3>"
+        })
+
+        let app = new Vue({
+            el:"#app",
+            data:{
+                
+            },
+        })
+    </script>
+</body>
+
+</html>

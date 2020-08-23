@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-component-name></my-component-name>
+        <ComponentA></ComponentA>
+    </div>
+
+    <script>
+        Vue.component("MyComponentName",{
+            //这里还是有疑问
+            template:"<div>this is my component</div>"
+        })
+        
+        //局部注册
+        var ComponentA ={
+            template:"<h1>局部注册</h1>"
+        }
+        let app = new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            components:{
+                'componenta':ComponentA,
+            }
+        })
+    </script>
+</body>
+
+</html>
