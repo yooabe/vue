@@ -12,3 +12,6 @@ third: https://www.bilibili.com/video/BV11z411v7BH
 
 ###### 3dmax
 3dmax: https://www.bilibili.com/video/BV1st411S78q
+
+###### 极客时间
+jike: https://time.geekbang.org/course/detail/163-86419

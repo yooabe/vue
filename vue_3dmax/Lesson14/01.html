@@ -10,24 +10,29 @@
 
 <body>
     <div id="app">
-        <blog-post title="hello" :likes="5" :is-published="true" :comment-ids="[1,2,3]"></blog-post>
+        <blog-post></blog-post>
     </div>
 
     <script>
-        Vue.component("blog-post",{
-            props:{
-                title:String,
-                likes:Number,
-                isPublished:Boolean,
-                commentIds:Array
+        Vue.component("blog-post", {
+            props: {
+                'size':{
+                    type:[String,Number],
+                    default:"20"
+                }
             },
-            template:"<h3>{{title}} {{likes}}</h3>"
+            computed: {
+                normalizedSize:function(){
+                    return this.size.trim().toLowerCase()
+                }
+            },
+            template: "<h3>{{normalizedSize}}</h3>"
         })
 
         let app = new Vue({
-            el:"#app",
-            data:{
-                
+            el: "#app",
+            data: {
+
             },
         })
     </script>
