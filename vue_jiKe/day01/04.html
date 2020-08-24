@@ -15,7 +15,13 @@
         <!-- <ul>
             <todo-item v-for="item in list" :title="item.title" :del="item.del"></todo-item>
         </ul> -->
-        <todo-list></todo-list>
+        <todo-list>
+            <todo-item @delete="handleDelete" v-for="item in list" :title="item.title" :del="item.del">
+                <template v-slot:pre-icon="{value}">
+                    <span>前置图标{{value}}</span>
+                </template>
+            </todo-item>
+        </todo-list>
     </div>
 
     <script>
@@ -29,13 +35,17 @@
             },
             template: `
             <li>
+                <slot name="pre-icon" :value="value"></slot>
                 <span v-if="!del">{{title}}</span>
                 <span v-else style="text-decoration:line-through">{{title}}</span>
+                <slot name="suf-icon">😄</slot>
                 <button v-show="!del"  @click="handleClick">del</button>
             </li>
             `,
             data: function () {
-                return {}
+                return {
+                    value:Math.random()
+                }
             },
             methods: {
                 handleClick:function(e){
@@ -48,28 +58,15 @@
         Vue.component('todo-list', {
             template: `
             <ul>
-            <todo-item @delete="handleDelete" v-for="item in list" :title="item.title" :del="item.del"></todo-item>
+                <slot></slot>
             </ul>
             `,
             data: function () {
                 return {
-                    list: [
-                        {
-                            title: '课程1',
-                            del: false
-                        },
-                        {
-                            title: '课程2',
-                            del: true
-                        }
-                    ],
+
                 }
             },
-            methods:{
-                handleDelete:function(val){
-                    console.log('handleDelete',val)
-                }
-            }
+            
         })
         let vm = new Vue({
             el: "#app",
@@ -84,10 +81,11 @@
                         title: '课程2',
                         del: true
                     }
-                ],
-                item: {
-                    title: '课程1',
-                    del: false
+                ]
+            },
+            methods:{
+                handleDelete:function(val){
+                    console.log('handleDelete',val)
                 }
             }
         })
