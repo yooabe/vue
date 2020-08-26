@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <bbar name="主页" :show="false"></bbar>
+        <bbar name="简介" :show="true"></bbar>
+        <bbar name="产品" :show="true"></bbar>
+        <br>
+        <bbar :name="p_name"></bbar>
+    </div>
+
+    <script>
+        Vue.component('bbar', {
+            template: `
+                <div>
+                    <button v-if="show" @click="c">首页</button>
+                    {{name}}
+                </div>
+                `,
+            props: {
+                name:String,
+                show:Boolean
+            },
+            methods: {
+                c(){
+                    alert(1);
+                }
+            },
+        })
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                p_name:'???'
+            }
+        })
+    </script>
+</body>
+
+</html>
