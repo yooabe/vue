@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 2.绑定数据 -->
+        <bbar @event='receive'></bbar>
+        <br>
+        {{show}}
+    </div>
+
+    <script>
+        Vue.component('bbar',{
+            template:`
+            <div>
+                <button @click='send'>按钮</button>
+            </div>
+            `,
+            methods: {
+                send(){
+                    //1.传出数据
+                    this.$emit('event', '数据2')
+                }
+            },
+        })
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                show:[]
+            },
+            methods:{
+                //3.更改数据
+                receive(e){this.show.push(`收到信息-${e}`)}
+            }
+        })
+    </script>
+</body>
+</html>
